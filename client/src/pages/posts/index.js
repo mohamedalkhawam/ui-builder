@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Layout from "../../layout";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { MdKeyboardArrowUp } from "react-icons/md";
+import { FiLayers, FiMaximize, FiNavigation } from "react-icons/fi";
+import { CgArrowsShrinkV, CgArrowAlignV } from "react-icons/cg";
 import Modal from "../../components/modal";
 const Posts = () => {
   const [showModal, setShowModal] = useState(false);
@@ -26,7 +28,27 @@ const Posts = () => {
     className: "mb-1 border border-gray-300 w-full p-2",
     idName: "",
     style: "",
-    contents: [],
+    contents: [
+      {
+        title: "",
+        tagName: "div",
+        className: "mb-1 border-2 border-gray-300 w-full p-2 h-64",
+        idName: "",
+        style: "",
+        contents: [
+          {
+            title: "",
+            tagName: "div",
+            className: "mb-1 border-2 border-gray-300 w-full p-2 h-32",
+            idName: "",
+            style: "",
+            contents: [],
+            static: true,
+          },
+        ],
+        static: true,
+      },
+    ],
     static: true,
   });
 
@@ -104,28 +126,40 @@ const Posts = () => {
       <div className="flex justify-between items-start gap-x-3 w-full">
         <div className="w-24 rounded fixed left-3 bg-zinc-800 text-white flex flex-wrap">
           <div className="text-white w-12 h-12 rounded flex justify-center items-center text-2xl hover:bg-zinc-900 cursor-pointer duration-150">
-            <MdKeyboardArrowUp />
-          </div>{" "}
+            <FiNavigation />
+          </div>
           <div className="text-white w-12 h-12 rounded flex justify-center items-center text-2xl hover:bg-zinc-900 cursor-pointer duration-150">
-            <MdKeyboardArrowUp />
-          </div>{" "}
+            <FiMaximize />
+          </div>
           <div className="text-white w-12 h-12 rounded flex justify-center items-center text-2xl hover:bg-zinc-900 cursor-pointer duration-150">
             <MdKeyboardArrowUp />
           </div>
         </div>
         <div className="bg-[#e8e8e8] w-full min-h-[256px] ml-28 mr-[400px]">
-          {pageConfig.contents.map((item) => (
-            <item.tagName id={item.id} className={item.className}>
-              11
-            </item.tagName>
-          ))}
-        </div>{" "}
+          <pageConfig.tagName
+            id={pageConfig.idName}
+            className={pageConfig.className}
+          >
+            {pageConfig.contents.map((item) => (
+              <item.tagName id={item.idName} className={item.className}>
+                {item.title}
+              </item.tagName>
+            ))}
+          </pageConfig.tagName>
+        </div>
         <div className=" w-96 flex flex-col fixed right-3">
           <div className="w-full flex text-zinc-50 flex-col bg-zinc-800 rounded">
-            <div className="w-full flex">
-              <div className="w-full">1</div>
-              <div className="w-full">2</div>
-              <div className="w-full">3</div>
+            <div className="w-full flex text-2xl">
+              <div className="text-white w-12 h-12 rounded flex justify-center items-center text-2xl hover:bg-zinc-900 cursor-pointer duration-150">
+                <FiLayers />
+              </div>
+              <div className="text-white w-12 h-12 rounded flex justify-center items-center text-2xl hover:bg-zinc-900 cursor-pointer duration-150">
+                <CgArrowsShrinkV />
+              </div>
+
+              <div className="text-white w-12 h-12 rounded flex justify-center items-center text-2xl hover:bg-zinc-900 cursor-pointer duration-150">
+                <CgArrowAlignV />
+              </div>
             </div>
           </div>
         </div>

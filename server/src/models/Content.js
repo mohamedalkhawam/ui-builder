@@ -7,15 +7,12 @@ const contentSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
     },
     description: {
       type: String,
-      required: true,
     },
     keywords: {
       type: [String],
-      required: true,
     },
     URL: {
       type: String,
@@ -27,16 +24,13 @@ const contentSchema = new Schema(
     },
     className: {
       type: String,
-      required: true,
       default: "mb-1 border border-gray-300 w-full p-2",
     },
     idName: {
       type: String,
-      required: true,
     },
     style: {
       type: String,
-      required: true,
     },
     contents: {
       type: Schema.Types.ObjectId,

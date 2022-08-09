@@ -30,7 +30,7 @@ exports.patchContent = async (req, res) => {
 
 exports.getContents = async (req, res) => {
   try {
-    const contents = await loadContents(req.query.setup_id);
+    const contents = await loadContents(req.query.contentId);
     res.status(200).json({ contents });
   } catch (e) {
     res.status(500).json({

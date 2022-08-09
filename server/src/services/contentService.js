@@ -10,33 +10,51 @@ exports.createContent = async (data) => {
 };
 
 exports.updateContent = async (contentId, values) => {
-  const clearedFieldToUpdate = {};
-  if (values.name) {
-    clearedFieldToUpdate.name = values.name;
+  const updatedContent = {};
+  if (values.title) {
+    updatedContent.title = values.title;
   }
-  if (values.image) {
-    clearedFieldToUpdate.image = values.image;
+  if (values.description) {
+    updatedContent.description = values.description;
   }
-  if (values.color) {
-    clearedFieldToUpdate.color = values.color;
+  if (values.keywords) {
+    updatedContent.keywords = values.keywords;
   }
-  if (values.short_name) {
-    clearedFieldToUpdate.short_name = values.short_name;
+  if (values.URL) {
+    updatedContent.URL = values.URL;
+  }
+  if (values.tagName) {
+    updatedContent.tagName = values.tagName;
+  }
+  if (values.className) {
+    updatedContent.className = values.className;
+  }
+  if (values.idName) {
+    updatedContent.idName = values.idName;
+  }
+  if (values.style) {
+    updatedContent.style = values.style;
+  }
+  if (values.static) {
+    updatedContent.static = values.static;
+  }
+  if (values.contents) {
+    updatedContent.contents = values.contents;
   }
   await Content.findOneAndUpdate(
     { _id: mongoose.Types.ObjectId(contentId) },
-    clearedFieldToUpdate
+    updatedContent
   );
 };
 
-exports.loadContents = async (setup_id) => {
-  return await Content.find({ setup_id }).exec();
+exports.loadContents = async (contentId) => {
+  return await Content.find({ contentId }).exec();
 };
 
 exports.loadAllContents = async () => {
   return await Content.find().exec();
 };
 
-exports.removeContent = async (contentId) => {
-  await Content.deleteOne({ _id: mongoose.Types.ObjectId(contentId) }).exec();
+exports.removeContent = async (id) => {
+  await Content.deleteOne({ _id: mongoose.Types.ObjectId(id) }).exec();
 };
